@@ -1,0 +1,34 @@
+Images:
+    size: 64
+    channels: 3
+    seed size: 100
+    
+etc:
+    Data Path: /home/nmelgiri/PycharmProjects/Fatima/data/
+
+Training:
+    epochs: 20
+    batch size: 32
+    lr: 0.0002
+    beta: 0.5
+    gpu: 1
+    validation interval: 4000   # After how many batches should validation take place?
+    workers: 8
+
+Neural Networks:
+    number of generator features: 256
+    number of discriminator features: 256
+
+ImageNet:
+    Easy Access Key: ea4b47cdc84168baab4348ed5986494fd4f5412b
+    Username: engineeringgeek
+
+Unsplash:
+    Access Key: DZ74KpiYBgMXwy4QyTeO7EPHevZJHdZOTkhWHnjx3zo
+    Secret Key: 1au-AYGzF2TNBaYnsUSTOmLwN-tk4wPyL62_mIEHrls
+
+ShutterStock:
+    Consumer Key: ZuIrW2JouRTPdhV4XE44GXeXUpF2DDZc
+    Consumer Secret: hKldbHThGIVs5xPw
+    Token: v2/WnVJclcySm91UlRQZGhWNFhFNDRHWGVYVXBGMkREWmMvMjgyODE2NDUzL2N1c3RvbWVyLzMvZEpmM1B0dWg0eEVnbmhCcXVidjhOOXJwRjRXUVU5NnFNeXUzank1UTA5U0E5Tk1Zd0ctaW1qc1BaYVJmWVd1bU80dm8yM3hGZmJVNzZDOTdweUdET0tfMlEwd3FzU0ctemVob1pITzVnN3kzWmtyNmZyY1dZemoyRHdEZFpaVTd3dHRNV3JFNXk4QUQtQTg2MThfemt2SV8zZUo2M3BpQkotbGFIc3J2ajdqaDlwYkdfMGVZdWtOWldheW1UUEh2RVVoX1RoVlBndHJWR2xaUmVwMkZVUQ
+    

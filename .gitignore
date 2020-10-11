@@ -1,0 +1,6 @@
+venv/
+.idea/
+Models/
+__pycache__/
+data/
+testing/
