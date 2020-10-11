@@ -117,9 +117,15 @@ class Trainer:
 		self.discriminator.zero_grad()
 		label = torch.full((self.batch_size,), self.real_label, dtype=torch.float, device=self.device)
 		output = self.discriminator(data[0].to(self.device))
+		import sys
+		print()
+		print()
+		print("output shape:", output.shape)
+		print(label.shape)
+		print()
+		sys.exit()
 		discriminator_error_real = self.criterion(output, label)
 		discriminator_error_real.backward()
-		
 		# Discriminator with all-fake batch
 		fake_results = self.generator(torch.randn(self.batch_size, self.seed_size, 1, 1, device=self.device))
 		label.fill_(self.fake_label)
@@ -216,7 +222,7 @@ class Trainer:
 						"Discriminator Train Loss": np.asarray(training_discriminator_loss).mean(),
 						"Discriminator Valid Loss": np.asarray(validating_discriminator_loss).mean()
 					})
-					# Saving best model
+					# Saving best generator model
 					if self.lowest_generator_loss > np.asarray(validating_generator_loss).mean():
 						self.lowest_generator_loss = np.asarray(validating_generator_loss).mean()
 						torch.save(
@@ -226,10 +232,8 @@ class Trainer:
 								'optimizer_state_dict': self.generator_optimizer.state_dict(),
 								'loss': self.lowest_generator_loss,
 							},
-							"/home/nmelgiri/PycharmProjects/Fatima/Models/Generators/model_2_{}.pt".format(save_iter)
+							"/home/nmelgiri/PycharmProjects/Art-Generator-GAN/Models/Generators/model_2_{}.pt".format(save_iter)
 						)
-					if self.lowest_discriminator_loss > np.asarray(validating_discriminator_loss).mean():
-						self.lowest_discriminator_loss = np.asarray(validating_discriminator_loss).mean()
 						torch.save(
 							{
 								"epoch": epoch,
@@ -237,7 +241,7 @@ class Trainer:
 								'optimizer_state_dict': self.discriminator_optimizer.state_dict(),
 								'loss': self.lowest_discriminator_loss,
 							},
-							"/home/nmelgiri/PycharmProjects/Fatima/Models/Discriminators/model_2_{}.pt".format(save_iter)
+							"/home/nmelgiri/PycharmProjects/Art-Generator-GAN/Models/Discriminators/model_2_{}.pt".format(save_iter)
 						)
 					validating_generator_loss = []
 					training_generator_loss = []
@@ -266,7 +270,9 @@ if __name__ == '__main__':
 		batch_size=doc["Training"]["batch size"],
 		val_interval=doc["Training"]["validation interval"],
 		img_size=doc["Images"]["size"],
-		workers=doc["Training"]["workers"]
+		workers=doc["Training"]["workers"],
+		train_ratio=0.95,
+		val_test_ratio=0.5
 	)
 	trainer.compile_models()
 	print("Compiling complete")

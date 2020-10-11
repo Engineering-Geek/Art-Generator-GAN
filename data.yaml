@@ -1,14 +1,14 @@
 Images:
-    size: 64
+    size: 128
     channels: 3
     seed size: 100
     
 etc:
-    Data Path: /home/nmelgiri/PycharmProjects/Fatima/data/
+    Data Path: /home/nmelgiri/PycharmProjects/Art-Generator-GAN/data/
 
 Training:
-    epochs: 20
-    batch size: 32
+    epochs: 5
+    batch size: 64
     lr: 0.0002
     beta: 0.5
     gpu: 1
@@ -16,8 +16,8 @@ Training:
     workers: 8
 
 Neural Networks:
-    number of generator features: 256
-    number of discriminator features: 256
+    number of generator features: 64
+    number of discriminator features: 64
 
 ImageNet:
     Easy Access Key: ea4b47cdc84168baab4348ed5986494fd4f5412b
